@@ -6,14 +6,13 @@ const top = (req,res) => {
     rp(link)
     .then(html => {
         let data = [];
-        let len = $('span.chart-element__information__song',html).length;
-        for (let i = 0; i < 200; i++) {
-            let song = $('span.chart-element__information__song',html)[i].children[0].data;
-            let singer = $('span.chart-element__information__artist',html)[i].children[0].data;
-            data.push({
-                song: song,
-                singer: singer
-            })
+        let lenght1 = $('span.chart-element__information__song',html)
+        let length2 = $('span.chart-element__information__artist',html)
+        for (let i = 0; i < lenght1.length; i++) {
+            data.push({song: lenght1[i].children[0].data} )            
+        }
+        for (let i = 0; i < length2.length; i++) {
+            data[i] = {...data[i], singer:length2[i].children[0].data};
         }
         res.json(data);
     })
@@ -25,14 +24,13 @@ const global = (req,res) => {
     rp(link)
     .then(html => {
         let data = [];
-        let len = $('span.chart-element__information__song',html).length;
-        for (let i = 0; i < 200; i++) {
-            let song = $('span.chart-element__information__song',html)[i].children[0].data;
-            let singer = $('span.chart-element__information__artist',html)[i].children[0].data;
-            data.push({
-                song: song,
-                singer: singer
-            })
+        let lenght1 = $('span.chart-element__information__song',html)
+        let length2 = $('span.chart-element__information__artist',html)
+        for (let i = 0; i < lenght1.length; i++) {
+            data.push({song: lenght1[i].children[0].data} )            
+        }
+        for (let i = 0; i < length2.length; i++) {
+            data[i] = {...data[i], singer:length2[i].children[0].data};
         }
         res.json(data);
     })
